@@ -1,5 +1,6 @@
 import React from 'react';
 import { Box, Divider, Typography } from '@mui/material';
+import he from 'he';
 
 import VideoTile from '../../components/VideoTile';
 import Searchbar from '../../components/Searchbar';
@@ -38,12 +39,13 @@ const Home = () => {
                         </Typography>
                         {visibleItems.map(({ snippet, id }) => {
                             const { title, description, thumbnails } = snippet;
+                            const formattedTitle = he.decode(title);
                             return (
                                 <VideoTile
-                                    title={title}
+                                    title={formattedTitle}
                                     description={description}
                                     thumbnailUrl={thumbnails.medium.url}
-                                    onSelect={() => handleSuggestedVideoSelect(title)}
+                                    onSelect={() => handleSuggestedVideoSelect(formattedTitle)}
                                     key={id.videoId}
                                 />
                             );

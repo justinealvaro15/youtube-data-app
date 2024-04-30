@@ -1,4 +1,5 @@
 import React from 'react';
+import he from 'he';
 import ReactPlayer from 'react-player';
 
 import { Box, Card, CardContent, Typography } from '@mui/material';
@@ -7,6 +8,7 @@ import { useStyles } from './styles';
 
 const VideoPlayerTile = ({ title, description, videoUrl }) => {
     const classes = useStyles();
+    const formattedTitle = he.decode(title);
 
     return (
         <Card className={classes.root}>
@@ -15,7 +17,7 @@ const VideoPlayerTile = ({ title, description, videoUrl }) => {
             </Box>
             <Box className={classes.content}>
                 <CardContent>
-                    <Typography variant="h4" fontWeight={700}>{title}</Typography>
+                    <Typography variant="h4" fontWeight={700}>{formattedTitle}</Typography>
                     <Typography variant="body1" color="gray">
                         {description}
                     </Typography>
