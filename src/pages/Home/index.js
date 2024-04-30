@@ -15,6 +15,10 @@ const Home = () => {
     const visibleItems = items.slice(1, 6);
     const { snippet: mainVideoSnippet, id: mainVideoId } = items[0] ?? {};
 
+    const handleSuggestedVideoSelect = async (title) => {
+        await triggerSearchList(title);
+    };
+
     return (
         <div className={classes.root}>
             <Searchbar onSearch={triggerSearchList} />
@@ -34,6 +38,7 @@ const Home = () => {
                             title={title}
                             description={description}
                             thumbnailUrl={thumbnails.medium.url}
+                            onSelect={() => handleSuggestedVideoSelect(title)}
                             key={id.videoId}
                         />
                     );

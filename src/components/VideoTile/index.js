@@ -3,11 +3,11 @@ import { Box, Card, CardContent, CardMedia, Typography } from '@mui/material';
 
 import { useStyles } from './styles';
 
-const VideoTile = ({ title, description, thumbnailUrl }) => {
+const VideoTile = ({ title, description, thumbnailUrl, onSelect }) => {
     const classes = useStyles();
 
     return (
-        <Card className={classes.root}>
+        <Card className={classes.root} onClick={onSelect}>
             <CardMedia
                 component="img"
                 image={thumbnailUrl}
