@@ -3,17 +3,24 @@ import ReactDOM from 'react-dom/client';
 import { createTheme } from '@mui/material';
 
 import './index.css';
-import App from './App';
 import reportWebVitals from './reportWebVitals';
 import { ThemeProvider } from '@mui/styles';
+import { RouterProvider, createBrowserRouter } from 'react-router-dom';
+import Home from './pages/Home';
 
 const theme = createTheme();
+const router = createBrowserRouter([
+  {
+    path: "/",
+    element: <Home />,
+  },
+]);
 
 const root = ReactDOM.createRoot(document.getElementById('root'));
 root.render(
   <React.StrictMode>
     <ThemeProvider theme={theme}>
-      <App />
+      <RouterProvider router={router} />
     </ThemeProvider>
   </React.StrictMode>
 );
