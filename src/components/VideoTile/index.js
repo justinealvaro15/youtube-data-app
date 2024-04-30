@@ -7,7 +7,7 @@ const VideoTile = ({ title, description, thumbnailUrl, onSelect }) => {
     const classes = useStyles();
 
     return (
-        <Card className={classes.root} onClick={onSelect}>
+        <Card className={classes.root} onClick={onSelect} elevation={0}>
             <CardMedia
                 component="img"
                 image={thumbnailUrl}
@@ -16,7 +16,7 @@ const VideoTile = ({ title, description, thumbnailUrl, onSelect }) => {
             />
             <Box className={classes.content}>
                 <CardContent>
-                    <Typography variant="h4">{title}</Typography>
+                    <Typography variant="h5">{title}</Typography>
                     <Typography variant="body1" color="gray">
                         {description}
                     </Typography>

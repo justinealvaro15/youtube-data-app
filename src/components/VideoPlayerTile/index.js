@@ -15,7 +15,7 @@ const VideoPlayerTile = ({ title, description, videoUrl }) => {
             </Box>
             <Box className={classes.content}>
                 <CardContent>
-                    <Typography variant="h4">{title}</Typography>
+                    <Typography variant="h4" fontWeight={700}>{title}</Typography>
                     <Typography variant="body1" color="gray">
                         {description}
                     </Typography>

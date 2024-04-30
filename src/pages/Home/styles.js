@@ -15,4 +15,9 @@ export const useStyles = makeStyles((theme) => ({
         gap: '24px',
         paddingBottom: '24px',
     },
+    container: {
+        display: 'flex',
+        flexDirection: 'column',
+        paddingBottom: '24px',
+    },
 }));

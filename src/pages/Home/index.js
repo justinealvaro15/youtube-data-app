@@ -1,5 +1,5 @@
 import React from 'react';
-import { Box, Divider } from '@mui/material';
+import { Box, Divider, Typography } from '@mui/material';
 
 import VideoTile from '../../components/VideoTile';
 import Searchbar from '../../components/Searchbar';
@@ -22,7 +22,7 @@ const Home = () => {
     return (
         <div className={classes.root}>
             <Searchbar onSearch={triggerSearchList} />
-            <Box className={classes.list}>
+            <Box className={classes.container}>
                 {items[0] && (
                     <VideoPlayerTile
                         title={mainVideoSnippet.title}
@@ -30,19 +30,27 @@ const Home = () => {
                         videoUrl={`https://www.youtube.com/watch?v=${mainVideoId.videoId}`}
                     />
                 )}
-                <Divider />
-                {visibleItems.map(({ snippet, id }) => {
-                    const { title, description, thumbnails } = snippet;
-                    return (
-                        <VideoTile
-                            title={title}
-                            description={description}
-                            thumbnailUrl={thumbnails.medium.url}
-                            onSelect={() => handleSuggestedVideoSelect(title)}
-                            key={id.videoId}
-                        />
-                    );
-                })}
+                {items.length > 0 && (
+                    <Box className={classes.list} >
+                        <Divider />
+                        <Typography variant="subtitle1" fontWeight={700} color="gray">
+                            SIMILAR VIDEOS
+                        </Typography>
+                        {visibleItems.map(({ snippet, id }) => {
+                            const { title, description, thumbnails } = snippet;
+                            return (
+                                <VideoTile
+                                    title={title}
+                                    description={description}
+                                    thumbnailUrl={thumbnails.medium.url}
+                                    onSelect={() => handleSuggestedVideoSelect(title)}
+                                    key={id.videoId}
+                                />
+                            );
+                        })}
+                    </Box>
+                )}
+
             </Box>
         </div>
     );
