@@ -3,12 +3,13 @@ import { Box, Button, TextField } from '@mui/material';
 
 import { useStyles } from './styles';
 
-const Searchbar = () => {
+const Searchbar = ({ onSearch }) => {
     const classes = useStyles();
     const [input, setInput] = useState('');
 
     const handleSearch = () => {
-        console.log('input', input);
+        onSearch(input);
+        setInput('');
     };
 
     return (
@@ -17,6 +18,7 @@ const Searchbar = () => {
                 className={classes.search}
                 label="Search video"
                 variant="outlined"
+                value={input}
                 onChange={(e) => setInput(e.target.value)}
             />
             <Button variant="outlined" onClick={handleSearch}>
