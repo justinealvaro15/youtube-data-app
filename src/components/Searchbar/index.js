@@ -8,8 +8,10 @@ const Searchbar = ({ onSearch }) => {
     const [input, setInput] = useState('');
 
     const handleSearch = () => {
-        onSearch(input);
-        setInput('');
+        if (input) {
+            onSearch(input);
+            setInput('');
+        }
     };
 
     return (
@@ -17,6 +19,7 @@ const Searchbar = ({ onSearch }) => {
             <TextField
                 className={classes.search}
                 label="Search video"
+                placeholder="Type video title"
                 variant="outlined"
                 value={input}
                 onChange={(e) => setInput(e.target.value)}
